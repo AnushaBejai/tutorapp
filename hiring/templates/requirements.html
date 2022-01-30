@@ -1,0 +1,33 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+<br>
+<br>
+
+
+<div class="container card">
+  <h1>Tutor Required</h1>
+  <div class="card-body">
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+
+        <th>Description</th>
+        <th>Level</th>
+        <th>Experience</th>
+        <th>phone</th>
+      </tr>
+      {% for c in requirement %}
+      <tr>
+        <td>{{c.name}}</td>
+        <td>{{c.subject}}</td>
+
+        <td>{{c.description}}</td>
+        <td>{{c.level}}</td>
+        <td>{{c.experience}}</td>
+        <td>{{c.phone}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% include 'footer.html' %} {% endblock %}

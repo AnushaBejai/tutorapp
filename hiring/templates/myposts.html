@@ -1,0 +1,37 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+<br />
+<br />
+<br />
+<br />
+<div class="container card">
+  <h1>My Posts</h1>
+  <div class="card-body">
+    <table class="table table-hover">
+      <tr>
+        <th>Subject</th>
+        <th>Description</th>
+
+        <th>Price</th>
+        <th>Experience</th>
+        <th>Level</th>
+        <th>Action</th>
+      </tr>
+      {% for c in myposts %}
+      <tr>
+        <td>{{c.subject}}</td>
+        <td>{{c.description}}</td>
+
+        <td>{{c.salary}}</td>
+        <td>{{c.experience}}</td>
+        <td>{{c.level}}</td>
+        <td>
+          <a class="user btn btn-danger" href="{% url 'deletepost' c.id %}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% include 'footer.html' %} {% endblock %}

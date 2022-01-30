@@ -1,0 +1,61 @@
+<head>
+  <style>
+    .user {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+  <div class= "container">
+  <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent"></div> 
+
+  {% if request.user.is_authenticated and not request.user.is_superuser %} 
+  <span class="user">Hello, {{request.user}} &nbsp;</span>
+  <span
+    >
+     <a class="user btn btn-info" href="{% url 'mypost' %}"> My Posts</a></span
+  >
+  <li>
+    <a class="user" href="{% url 'requirements' %}"> Requirements</a></span
+    >
+  </li> 
+  
+  <li>
+    <a class="user btn btn-success" href="{% url 'logout' %}"> Logout</a></span
+    >
+  </li> 
+ 
+  
+
+  {% else %}
+
+  <li>
+
+
+    <span><a class="user" href="{% url 'login' %}"> Tutor Login </a></span>
+
+    
+  </li>
+
+  <li>
+    <span
+      ><a class="user" href="{% url 'register' %}"> Become a Tutor </a></span
+    >
+  </li>
+
+  {% endif %}
+</nav>

@@ -1,0 +1,30 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">New Tutor Posts</h5>
+        <p class="card-text">Approve or reject Tutor Posts.</p>
+        <a href="{% url 'admin_tutorpost' %}" class="btn btn-primary">Visit</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Student Posts</h5>
+        <p class="card-text">Approve or reject Student Post.</p>
+        <a href="#" class="btn btn-primary">Visit</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% include 'footer.html' %} {% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+<head>
+  <style>
+    .maindiv {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<hr />
+<hr />
+
+<section class="bg-primary text-light p-4">
+  <div class="container">
+    <h3 class="text-center mb-0">Tutor Registration</h3>
+  </div>
+</section>
+<br />
+
+<div class="maindiv jumbotron container">
+  <form method="POST" action="">
+    {% csrf_token %} {{form.as_p}}
+    <input class="btn btn-success btn-lg" type="submit" value="Register" />
+    <p>Already have an account?<a href='{% url "login" %}'> Login</a></p>
+  </form>
+</div>
+{% endblock %}
+
+<!--{
+"username": "pran",
+"password":"pn@010",
+"confirm_password":"pn@010" 
+}-->
+
+<!--{
+  "username" : "anusha",
+  "password" : "Anu@0101"
+}-->
+
+<!--
+  {
+    "name" : "maitri",
+    "dob" : "12/06/2003",
+    "gender" : "female",
+    "mobile" : "599336754",
+    "email" : "maitri@gmail.com",
+    "tutor" : "anusha"
+  }
+-->
+
+<!--client id:Q5gKGJw8Hm904XtPsozaDQMGAHPbMw3ilKdBeotS 
+client secret: SGKBNvqk8DLfScX0Kq1TaoccCn8huhgE6w4U8DCNkgvhZXjEqTDEQhlT3iBKNlNmcYicdRKowrn10z8dSvWDQ4K65lxuodTpYf41s6elqqFYe6EibCQrkfpNeVIgAkQr
+access token anusha: li2a0d2042RVEUzbrPYdU17LCzaHxR
+
+-->

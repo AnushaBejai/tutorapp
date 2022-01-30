@@ -1,0 +1,53 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-1 text-center">
+  <div class="container">
+    <div class="d-sm-flex align-items-center justify-content between">
+      <div>
+        <h1>Find your Ideal <span class="text-warning">Students</span></h1>
+        <p class="lead my-4">
+          "We now accept the fact that learning is a lifelong process of keeping
+          abreast of change. And the most pressing task is to teach people how
+          to learn.” <span class="text-warning">– Peter Drucker</span>
+        </p>
+        <span
+          ><a class="user btn btn-primary btn-lg" href="{% url 'tutorpost' %}">
+            Write a Post</a
+          ></span
+        >
+      </div>
+
+      <img
+        class="img-fluid w-25 d-none d-sm-block"
+        src="static/images/photo14.JPG"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<div class="container card">
+  <h1>Students applied</h1>
+  <div class="card-body">
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+        <th>DOB</th>
+
+        <th>Gender</th>
+        <th>Mobile</th>
+        <th>Email</th>
+      </tr>
+      {% for c in students %}
+      <tr>
+        <td>{{c.name}}</td>
+        <td>{{c.dob}}</td>
+
+        <td>{{c.gender}}</td>
+        <td>{{c.mobile}}</td>
+        <td>{{c.email}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% include 'footer.html' %} {% endblock %}

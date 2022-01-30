@@ -1,0 +1,103 @@
+{% extends 'main.html' %} {% load static%} {% block content %}
+
+{% load myapp_extras %}
+
+
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-1 text-center">
+  <div class="container">
+    <div class="d-sm-flex align-items-center justify-content between">
+      <div>
+        <h1>Find your Ideal <span class="text-warning">Tutor</span></h1>
+        <p class="lead my-4">
+          “Anyone who stops learning is old, whether at twenty or eighty. Anyone
+          who keeps learning stays young. The greatest thing in life is to keep
+          your mind young.”
+          <span class="text-warning">– Henry Ford</span>
+        </p>
+        <a class="user btn btn-success" href="{% url 'studentrequirement' %}"> Post Your Requirement</a></span
+    >
+      </div>
+
+      <img
+        class="img-fluid w-25 d-none d-sm-block"
+        src="static/images/photo13.JPG"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-light p-4">
+  <div class="row">
+    <div class="col">
+      <!--<form method="GET" class = "example" action = "" style = "margin:auto;max-width:350px">
+        {% csrf_token %}
+        <input type="text" placeholder = "Search Tutor or Subject" name="search">
+        <button type="submit" class="bg-dark text-light">Go</button>
+      </form>
+<br>-->
+      <form method="get">
+        <div class="container"
+        {{ filtered_posts.form.as_table}}
+      </div>
+      <div class="container">
+        <input type="submit" value="Search" />
+        </div>
+      </form>
+</section>
+
+
+
+<!--tutor cards-->
+<section class="p-5 bg-white">
+  <div class="container">
+    <h2 class="text-center text-dark">Our Tutors</h2>
+    <hr>
+    <div class="row g-4">
+      
+      {% for c in post_page_obj %}
+   
+      <div class="col-md-6 col-lg-3">
+        <div class="card bg-secondary">
+          <h3 class="card-title text-center mb-3"><span class="text-warning">{{c.tutor}}</span></h3>
+          <div class="card-body text-center text-light">Subject: {{c.subject}}</div>
+          <div class="container">
+            <p class="card-bady text-center text-light ">{{c.description}}</p>
+          </div>
+          <div class="card-body text-center text-light">Price: {{c.salary}}</div>
+          <div class="card-body text-center text-light">Experience: {{c.experience}}</div>
+          <div class="card-body text-center text-light">Level: {{c.level}}</div>
+          <div class="card-body text-center text-light">{{c.created_Date}}</div>
+          <a href="{% url 'apply' %}" class="btn btn-primary btn-sm" type="submit"
+            >Hire</a
+          >
+        </div>
+      </div>
+      
+      {% endfor %}
+      <!--Pagination-->
+      <div class="pagination">
+        <span class="step-links">
+          {% if post_page_obj.has_previous %}
+             <a href="{% my_url 1 'page' request.GET.urlencode %}" class="text-dark">&laquo; First</a>
+             <a href="{% my_url post_page_obj.previous_page_number 'page' request.GET.urlencode %}" class="text-dark">Previous</a> 
+          {% endif %}
+
+             <span>
+               Page {{post_page_obj.number}} of {{post_page_obj.paginator.num_pages}}
+             </span>
+      
+          {% if post_page_obj.has_next %}
+             <a href="{% my_url post_page_obj.next_page_number 'page' request.GET.urlencode %}" class="text-dark">Next</a>
+             <a href="{% my_url post_page_obj.paginator.num_pages 'page' request.GET.urlencode %}" class="text-dark">&raquo;Last</a> 
+          {% endif %}
+        </span>
+      </div>
+      </div>
+    </section>  
+    <hr>
+  {% include 'footer.html' %} {% endblock %}
+      
+    </div>
+  </div>
+</section>
